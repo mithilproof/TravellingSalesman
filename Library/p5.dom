@@ -52,56 +52,7 @@
    * @example
    * <div ><code class='norender'>
    * function setup() {
-   *   createCanvas(100,100);
-   *   //translates canvas 50px down
-   *   select('canvas').position(100, 100);
-   * }
-   * </code></div>
-   * <div ><code class='norender'>
-   * // these are all valid calls to select()
-   * var a = select('#moo');
-   * var b = select('#blah', '#myContainer');
-   * var c = select('#foo', b);
-   * var d = document.getElementById('beep');
-   * var e = select('p', d);
-   * </code></div>
-   *
-   */
-  p5.prototype.select = function (e, p) {
-    var res = null;
-    var container = getContainer(p);
-    if (e[0] === '.'){
-      e = e.slice(1);
-      res = container.getElementsByClassName(e);
-      if (res.length) {
-        res = res[0];
-      } else {
-        res = null;
-      }
-    }else if (e[0] === '#'){
-      e = e.slice(1);
-      res = container.getElementById(e);
-    }else {
-      res = container.getElementsByTagName(e);
-      if (res.length) {
-        res = res[0];
-      } else {
-        res = null;
-      }
-    }
-    if (res) {
-      return wrapElement(res);
-    } else {
-      return null;
-    }
-  };
 
-  /**
-   * Searches the page for elements with the given class or tag name (using the '.' prefix
-   * to specify a class and no prefix for a tag) and returns them as p5.Elements
-   * in an array.
-   * The DOM node itself can be accessed with .elt.
-   * Returns an empty array if none found.
    * You can also specify a container to search within.
    *
    * @method selectAll
